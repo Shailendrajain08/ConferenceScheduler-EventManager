@@ -1,0 +1,28 @@
+{
+  "user": [
+    {
+      "id": "Sjain08",
+      "fullname": "Shailendra Jain",
+      "password": "SJain0123@",
+      "email": "shailendraj@gmail.com",
+      "address": "MP Nagar Zone 1",
+      "gender": "male",
+      "hobbies": [
+        "music",
+        "dancing"
+      ]
+    },
+    {
+      "id": "Sjain0894",
+      "fullname": "Shailendra Jain",
+      "password": "Abc1234@",
+      "email": "shailendrajain@javarndventures.com",
+      "address": "104, Street no. 4",
+      "gender": "male",
+      "hobbies": [
+        "sports",
+        "reading"
+      ]
+    }
+  ]
+}
