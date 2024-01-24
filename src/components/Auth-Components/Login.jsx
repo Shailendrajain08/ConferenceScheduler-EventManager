@@ -8,7 +8,8 @@ function Login() {
   // const usenavigate = useNavigate()
 
   const handleLogin = (e) => {
-    console.log(e)
+    let regObj = { id, password };
+    console.log(regObj);
     e.preventDefault();
   }
 
