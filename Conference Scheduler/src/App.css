@@ -6,3 +6,7 @@
   .check-label{
     margin: 0px 15px 0 5px;
   }
+
+  .errmsg{
+    color: red;
+  }

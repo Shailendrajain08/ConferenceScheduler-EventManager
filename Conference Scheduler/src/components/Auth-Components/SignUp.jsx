@@ -2,17 +2,17 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 
 function SignUp() {
-  const [id, setId] = useState("");
+  const [userId, setUserId] = useState("");
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
   const [gender, setGender] = useState("");
-  const [hobbies, setHobbies] = useState([]);
+  // const [hobbies, setHobbies] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let regObj = { id, fullname, password, email, address, gender, hobbies };
+    let regObj = { userId, fullname, password, email, address, gender };
     console.log(regObj);
     if (IsValidate()) {
       fetch("http://localhost:3000/user", {
@@ -30,21 +30,21 @@ function SignUp() {
     }
   };
 
-  const handleCheckboxChange = (value) => {
-    // Check if the checkbox is already selected
-    if (hobbies.includes(value)) {
-      // If selected, remove it from the array
-      setHobbies(hobbies.filter((checkbox) => checkbox !== value));
-    } else {
-      // If not selected, add it to the array
-      setHobbies([...hobbies, value]);
-    }
-  };
+  // const handleCheckboxChange = (value) => {
+  //   // Check if the checkbox is already selected
+  //   if (hobbies.includes(value)) {
+  //     // If selected, remove it from the array
+  //     setHobbies(hobbies.filter((checkbox) => checkbox !== value));
+  //   } else {
+  //     // If not selected, add it to the array
+  //     setHobbies([...hobbies, value]);
+  //   }
+  // };
 
   const IsValidate = () => {
     let isproceed = true;
     let errormessage = "Please enter the value in";
-    if (id === null || id === "") {
+    if (userId === null || userId === "") {
       isproceed = false;
       errormessage += "Username";
     }
@@ -94,8 +94,8 @@ function SignUp() {
                   <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input
-                      value={id}
-                      onChange={(e) => setId(e.target.value)}
+                      value={userId}
+                      onChange={(e) => setUserId(e.target.value)}
                       type="text"
                       className="form-control"
                       id="username"
@@ -182,7 +182,7 @@ function SignUp() {
                       <label className="check-label">Other</label>
                     </div>
                   </div>
-                  <div className="col-lg-6">
+                  {/* <div className="col-lg-6">
                     <div className="form-group">
                       <label>
                         Hobbies <span className="errmsg">*</span>
@@ -234,7 +234,7 @@ function SignUp() {
                       ></input>
                       <label className="check-label">Travel</label>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className="card-footer">

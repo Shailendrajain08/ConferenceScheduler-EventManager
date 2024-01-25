@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import { toast } from "react-toastify";
+// import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [id, setId] = useState("");
@@ -8,14 +9,47 @@ function Login() {
   // const usenavigate = useNavigate()
 
   const handleLogin = (e) => {
-    let regObj = { id, password };
-    console.log(regObj);
     e.preventDefault();
-  }
+    if (validate()) {
+      fetch("http://localhost:3000/user/" + id)
+        .then((res) => {
+          return res.json();
+        })
+        .then((resp) => {
+          console.log(resp)
+          if (Object.keys(resp).length === 0) {
+            toast.error("Please Enter valid username");
+          } else {
+            if (resp.password === password) {
+              toast.success("Success");
+              sessionStorage.setItem("username", id);
+              sessionStorage.setItem("userrole", resp.role);
+              // usenavigate("/");
+            } else {
+              toast.error("Please Enter valid credentials");
+            }
+          }
+        })
+        .catch((err) => {
+          toast.error("Login Failed due to :" + err.message);
+        });
+    }
+  };
 
-  const newUser = () => {
- 
-  }
+  const newUser = () => {};
+
+  const validate = () => {
+    let result = true;
+    if (id === "" || id === null) {
+      result = false;
+      toast.warning("Please Enter Username");
+    }
+    if (password === "" || password === null) {
+      result = false;
+      toast.warning("Please Enter Password");
+    }
+    return result;
+  };
 
   return (
     <div>
@@ -64,7 +98,9 @@ function Login() {
                 <button type="submit" className="btn btn-primary">
                   Login In
                 </button>
-                <button className="btn btn-success ml-3" onClick={newUser}>New User</button>
+                <button className="btn btn-success ml-3" onClick={newUser}>
+                  New User
+                </button>
               </div>
             </div>
           </form>
