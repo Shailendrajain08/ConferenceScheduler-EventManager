@@ -1,63 +1,7 @@
 {
   "user": [
-    {
-      "id": "4400",
-      "userId": "ShaanJ",
-      "fullname": "Shaan Jain",
-      "password": "ShaanJ123@",
-      "email": "shaan@gmail.com",
-      "address": "104, Chancery Vintage ",
-      "gender": "male",
-      "hobbies": [
-        "sports",
-        "reading"
-      ]
-    },
-    {
-      "id": "5608",
-      "userId": "ShaanJ02",
-      "fullname": "Shaan Jain",
-      "password": "Shaan1234@",
-      "email": "shaan02@gmail.com",
-      "address": "104, Chancery Vintage ",
-      "gender": "male",
-      "hobbies": [
-        "reading",
-        "sports",
-        "travel",
-        "music"
-      ]
-    }
   ],
   "events": [
-    {
-      "id": "f34b",
-      "eventName": "Republic Day Celebration",
-      "eventType": "Cultural Events: Festivals/Concerts/Art Exhibitions",
-      "eventDate": "2024-01-26",
-      "eventTime": "07:00",
-      "eventOrganizer": "Indian Goverment",
-      "eventSpeakerDetails": "Honerable PM Mr. Narendra Modi",
-      "eventLocationAddress": "JanPath, New Delhi",
-      "eventTicketPrice": 500,
-      "eventNumSeat": 25000,
-      "eventOrganizerDetails": "Indian Goverment ",
-      "eventDescription": "Demonstration of Power"
-    },
-    {
-      "id": "9a97",
-      "eventName": "s agag aga",
-      "eventType": "Sports Events: Tournaments/Marathons/Sporting\r\n                        Conventions",
-      "eventDate": "2024-01-26",
-      "eventTime": "16:31",
-      "eventOrganizer": " agea gaegag",
-      "eventSpeakerDetails": " aa  a ffa faef af ae",
-      "eventLocationAddress": " fa faf a ae fa fa fa ",
-      "eventTicketPrice": 450,
-      "eventNumSeat": 3530,
-      "eventOrganizerDetails": "sa aga ga sgesa g seg geage",
-      "eventDescription": " afa fafawf awf waf wafwafwaf w fwa",
-      "bookedSeat": 0
-    }
+    
   ]
 }

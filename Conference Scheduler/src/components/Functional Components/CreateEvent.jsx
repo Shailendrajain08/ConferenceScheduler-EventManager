@@ -14,9 +14,11 @@ function CreateEvent() {
   const [eventOrganizerDetails, setEventOrganizerDetails] = useState("");
   const [eventDescription, setEventDescription] = useState("");
   const [bookedSeat, setBookedSeat] = useState(0);
+  const [buyerList, setBuyerList] = useState([]);
 
   const handleSubitEvent = (e) => {
     setBookedSeat(0);
+    setBuyerList([]);
     e.preventDefault();
     let eventObj = {
       eventName,
@@ -30,7 +32,8 @@ function CreateEvent() {
       eventNumSeat,
       eventOrganizerDetails,
       eventDescription,
-      bookedSeat
+      bookedSeat,
+      buyerList
     };
 
     if (isValidate()) {

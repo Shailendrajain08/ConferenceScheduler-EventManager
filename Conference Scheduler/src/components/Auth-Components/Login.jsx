@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 // import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const [id, setId] = useState("");
+  const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
 
   // const usenavigate = useNavigate()
@@ -11,7 +11,7 @@ function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
     if (validate()) {
-      fetch("http://localhost:3000/user/" + id)
+      fetch("http://localhost:3000/user/" + userId)
         .then((res) => {
           return res.json();
         })
@@ -22,7 +22,7 @@ function Login() {
           } else {
             if (resp.password === password) {
               toast.success("Success");
-              sessionStorage.setItem("username", id);
+              sessionStorage.setItem("username", userId);
               sessionStorage.setItem("userrole", resp.role);
               // usenavigate("/");
             } else {
@@ -40,7 +40,7 @@ function Login() {
 
   const validate = () => {
     let result = true;
-    if (id === "" || id === null) {
+    if (userId === "" || userId === null) {
       result = false;
       toast.warning("Please Enter Username");
     }
@@ -72,8 +72,8 @@ function Login() {
                   <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input
-                      value={id}
-                      onChange={(e) => setId(e.target.value)}
+                      value={userId}
+                      onChange={(e) => setUserId(e.target.value)}
                       type="text"
                       className="form-control"
                       id="username"
