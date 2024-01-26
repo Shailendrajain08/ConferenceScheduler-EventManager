@@ -1,4 +1,5 @@
 import { useState } from "react";
+// import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 function SignUp() {
@@ -8,7 +9,6 @@ function SignUp() {
   const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
   const [gender, setGender] = useState("");
-  // const [hobbies, setHobbies] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +22,6 @@ function SignUp() {
       })
         .then((res) => {
           toast.success("Signup Successfully", res.message);
-          // navigate('/login')
         })
         .catch((err) => {
           toast.error(`Something Went Wrong`, `${err.message}`);
@@ -241,7 +240,7 @@ function SignUp() {
                 <button type="submit" className="btn btn-primary">
                   Sign Up
                 </button>
-                <button className="btn btn-danger ml-3">Login</button>
+                {/* <Link to="/" className="btn btn-danger ml-3">Login</Link> */}
               </div>
             </div>
           </form>

@@ -1,7 +1,21 @@
 {
-  "user": [
-  ],
+  "user": [],
   "events": [
-    
+    {
+      "id": "e597",
+      "eventName": "Shailendra Jain Wedding Ceremony",
+      "eventType": "Social Events: Weddings/Parties/Reunions",
+      "eventDate": "2024-04-21",
+      "eventTime": "10:00",
+      "eventOrganizer": "Jain Pariwar",
+      "eventSpeakerDetails": "Dharmendra Jain, \nSecond Elder Brother of Groom and sr. associate at vistra expansion international, Indore (M.P.) ",
+      "eventLocationAddress": "Kundelpur Jain Temple, Dist. Damoh (M.P.)",
+      "eventTicketPrice": 0,
+      "eventNumSeat": 200,
+      "eventOrganizerDetails": "Jain Pariwar, C-13, Vijay Nagar, Damoh (M.P.) - 7869505416",
+      "eventDescription": "Wedding",
+      "bookedSeat": 0,
+      "buyerList": []
+    }
   ]
 }

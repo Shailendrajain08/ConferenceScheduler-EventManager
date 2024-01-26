@@ -14,10 +14,8 @@ function Header() {
           </a>
           
           <div className="navbar-nav flex-row" >
-          <a className="nav-link active mr-8" aria-current="page" href="/">Events</a>
-          <a className="nav-link active mr-8" aria-current="page" href="/">Organizer</a>
-          <a className="nav-link active mr-8" aria-current="page" href="/">Speaker</a>
-          <a className="nav-link active mr-8" aria-current="page" href="/">Participant</a>
+          <a className="nav-link active mr-8" aria-current="page" href="events">Events</a>
+          <a className="nav-link active mr-8" aria-current="page" href="createEvent">Create Event</a>
           <a className="nav-link active mr-8" aria-current="page" href="/">Log Out</a>
           </div>
           </div>

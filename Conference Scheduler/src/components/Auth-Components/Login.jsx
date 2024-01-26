@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import SignUp from "./SignUp";
-// import { useNavigate } from "react-router-dom";
+// import SignUp from "./SignUp";
+import {Link } from "react-router-dom";
 
 function Login() {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
 
-  // const usenavigate = useNavigate()
+
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -23,8 +23,7 @@ function Login() {
             if (resp.password === password) {
               toast.success("Success");
               sessionStorage.setItem("username", userId);
-              sessionStorage.setItem("userrole", resp.role);
-              // usenavigate("/");
+              sessionStorage.setItem("userrole", resp.role)
             } else {
               toast.error("Please Enter valid credentials");
             }
@@ -36,9 +35,6 @@ function Login() {
     }
   };
 
-  const newUser = () => {
-    <SignUp />;
-  };
 
   const validate = () => {
     let result = true;
@@ -104,9 +100,9 @@ function Login() {
                 >
                   Login In
                 </button>
-                <button className="btn btn-success ml-3" onClick={newUser}>
+                <Link  to="/signup" className="btn btn-success ml-3">
                   New User
-                </button>
+                </Link>
               </div>
             </div>
           </form>

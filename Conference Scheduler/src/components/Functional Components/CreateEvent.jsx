@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
 function CreateEvent() {
@@ -16,7 +17,11 @@ function CreateEvent() {
   const [bookedSeat, setBookedSeat] = useState(0);
   const [buyerList, setBuyerList] = useState([]);
 
-  const handleSubitEvent = (e) => {
+
+  const navigate = useNavigate();
+
+  const handleSubmitEvent = (e) => {
+    navigate("/events")
     setBookedSeat(0);
     setBuyerList([]);
     e.preventDefault();
@@ -331,7 +336,7 @@ function CreateEvent() {
             <div className="card-footer ">
               <button
                 type="submit"
-                onClick={handleSubitEvent}
+                onClick={handleSubmitEvent}
                 className="btn btn-primary col-lg-12"
               >
                 Create Event
