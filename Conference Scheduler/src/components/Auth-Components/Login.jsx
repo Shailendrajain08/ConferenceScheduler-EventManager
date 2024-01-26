@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+import SignUp from "./SignUp";
 // import { useNavigate } from "react-router-dom";
 
 function Login() {
@@ -16,7 +17,6 @@ function Login() {
           return res.json();
         })
         .then((resp) => {
-          console.log(resp)
           if (Object.keys(resp).length === 0) {
             toast.error("Please Enter valid username");
           } else {
@@ -36,7 +36,9 @@ function Login() {
     }
   };
 
-  const newUser = () => {};
+  const newUser = () => {
+    <SignUp />;
+  };
 
   const validate = () => {
     let result = true;
@@ -95,7 +97,11 @@ function Login() {
                 </div>
               </div>
               <div className="card-footer">
-                <button type="submit" className="btn btn-primary">
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  onClick={handleLogin}
+                >
                   Login In
                 </button>
                 <button className="btn btn-success ml-3" onClick={newUser}>
