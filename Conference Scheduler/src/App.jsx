@@ -1,20 +1,47 @@
 import "./App.css";
 import CreateEvent from "./components/Functional Components/CreateEvent";
-// import Login from "./components/Auth-Components/Login";
-// import SignUp from "./components/Auth-Components/SignUp";
-import { ToastContainer } from 'react-toastify';
-// import Header from "./components/Functional Components/Header";
+import Login from "./components/Auth-Components/Login";
+import SignUp from "./components/Auth-Components/SignUp";
+// import { ToastContainer } from "react-toastify";
+import Header from "./components/Functional Components/Header";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-function App() {
+const AppLayout = () => {
   return (
-    <>
-      <ToastContainer/>
-      {/* <Login /> */}
-      {/* <SignUp /> */}
-       {/* <Header/> */}
-      <CreateEvent/> 
-    </>
+    <div className="app">
+      <Login />
+    </div>
   );
-}
+};
 
-export default App;
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    children: [
+      {
+        path: "/signup",
+        element: <SignUp />,
+      },
+      {
+        path: "/",
+        element: <Login />,
+      },
+      {
+        path: "/header",
+        element: <Header />,
+      },
+      {
+        path: "/createEvent",
+        element: <CreateEvent />,
+      },
+    ],
+  },
+]);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<RouterProvider router={appRouter} />);
+
+export default AppLayout;
