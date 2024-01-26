@@ -33,13 +33,14 @@ function Cart() {
   const handleBuy = (item) => {
     item.buyerList.push(userID);
     item.bookedSeat ++
-    fetch("http://localhost:3000/events", {
+    console.log(item)
+    fetch("http://localhost:3000/events/" +item.id, {
         method: "PUT",
         body: JSON.stringify(item),
       })
         .then((res) => {
             console.log(res)
-        //   usenavigate("/events")
+          usenavigate("/events")
         })
         .catch((err) => {
             console.log(err.message)

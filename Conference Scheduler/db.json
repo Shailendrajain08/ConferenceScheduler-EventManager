@@ -31,8 +31,10 @@
       "eventNumSeat": 200,
       "eventOrganizerDetails": "Jain Pariwar, C-13, Vijay Nagar, Damoh (M.P.) - 7869505416",
       "eventDescription": "Wedding",
-      "bookedSeat": 0,
-      "buyerList": [],
+      "bookedSeat": 1,
+      "buyerList": [
+        "Sjain08"
+      ],
       "eventOrganizerId": "Sjain08"
     },
     {
