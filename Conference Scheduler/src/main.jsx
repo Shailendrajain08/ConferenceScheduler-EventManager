@@ -24,7 +24,7 @@ const router = createBrowserRouter(
       <Route path="/signup" element={<SignUp/>}></Route>
       <Route path="/createEvent" element={<CreateEvent/>}></Route>
       <Route path="/yourEvent" element={<YourEvent/>}></Route>
-      <Route path="/cart" element={<Cart/>}></Route>
+      <Route path="/cart/:id" element={<Cart/>}></Route>
 
     </Route>
 )

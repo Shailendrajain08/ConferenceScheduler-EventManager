@@ -25,12 +25,8 @@ function Events() {
     }
   }, []);
 
-  const handleCart = () => {
-  return(
-    <div>
-      <h1>this is me!!!!!</h1>
-    </div>
-  )
+  const handleCart = (dataObj) => {
+    usenavigate(`/cart/${dataObj}`)
 };
 
   return (
@@ -128,7 +124,7 @@ function Events() {
                             </div>
                           </div>
                           <div className="col-lg-6">
-                            <button className="btn btn-primary col-lg-6" onClick={handleCart}>
+                            <button className="btn btn-primary col-lg-6" onClick={()=> handleCart(dataObj.id)}>
                             
                               Buy
                             </button>
