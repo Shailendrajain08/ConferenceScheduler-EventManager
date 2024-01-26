@@ -1,5 +1,22 @@
 {
-  "user": [],
+  "user": [
+    {
+      "id": "ShaanJ",
+      "fullname": "Shaan Jain",
+      "password": "Shaan02",
+      "email": "shaan@gmail.com",
+      "address": "C-15, Vijay Nagar",
+      "gender": "male"
+    },
+    {
+      "id": "Sjain08",
+      "fullname": "Shailendra Jain",
+      "password": "Sjain0894@",
+      "email": "shailendrajain@javarndventures.com",
+      "address": "C-13, Vijay Nagar",
+      "gender": "male"
+    }
+  ],
   "events": [
     {
       "id": "e597",
@@ -15,7 +32,25 @@
       "eventOrganizerDetails": "Jain Pariwar, C-13, Vijay Nagar, Damoh (M.P.) - 7869505416",
       "eventDescription": "Wedding",
       "bookedSeat": 0,
-      "buyerList": []
+      "buyerList": [],
+      "eventOrganizerId": "Sjain08"
+    },
+    {
+      "id": "6466",
+      "eventName": "Holi Celebration",
+      "eventType": "Religious Events: Religious Ceremonies/Festivals",
+      "eventDate": "2024-03-25",
+      "eventTime": "08:30",
+      "eventOrganizer": "Vijay Nagar Society",
+      "eventSpeakerDetails": "Null",
+      "eventLocationAddress": "Vijay Nagar Garden",
+      "eventTicketPrice": 1,
+      "eventNumSeat": 9999,
+      "eventOrganizerDetails": "Vijay Nagar Comity ",
+      "eventDescription": "All residents of Vijay Nagar",
+      "bookedSeat": 0,
+      "buyerList": [],
+      "eventOrganizerId": "ShaanJ"
     }
   ]
 }

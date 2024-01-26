@@ -1,18 +1,20 @@
 import { useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 function SignUp() {
-  const [userId, setUserId] = useState("");
+  const [id, setId] = useState("");
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
   const [gender, setGender] = useState("");
 
+  const usenavigate = useNavigate()
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    let regObj = { userId, fullname, password, email, address, gender };
+    let regObj = { id, fullname, password, email, address, gender };
     console.log(regObj);
     if (IsValidate()) {
       fetch("http://localhost:3000/user", {
@@ -21,6 +23,7 @@ function SignUp() {
         body: JSON.stringify(regObj),
       })
         .then((res) => {
+          usenavigate("/")
           toast.success("Signup Successfully", res.message);
         })
         .catch((err) => {
@@ -29,21 +32,10 @@ function SignUp() {
     }
   };
 
-  // const handleCheckboxChange = (value) => {
-  //   // Check if the checkbox is already selected
-  //   if (hobbies.includes(value)) {
-  //     // If selected, remove it from the array
-  //     setHobbies(hobbies.filter((checkbox) => checkbox !== value));
-  //   } else {
-  //     // If not selected, add it to the array
-  //     setHobbies([...hobbies, value]);
-  //   }
-  // };
-
   const IsValidate = () => {
     let isproceed = true;
     let errormessage = "Please enter the value in";
-    if (userId === null || userId === "") {
+    if (id === null || id === "") {
       isproceed = false;
       errormessage += "Username";
     }
@@ -93,8 +85,8 @@ function SignUp() {
                   <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input
-                      value={userId}
-                      onChange={(e) => setUserId(e.target.value)}
+                      value={id}
+                      onChange={(e) => setId(e.target.value)}
                       type="text"
                       className="form-control"
                       id="username"
@@ -181,66 +173,14 @@ function SignUp() {
                       <label className="check-label">Other</label>
                     </div>
                   </div>
-                  {/* <div className="col-lg-6">
-                    <div className="form-group">
-                      <label>
-                        Hobbies <span className="errmsg">*</span>
-                      </label>
-                      <br></br>
-                      <input
-                        type="checkbox"
-                        name="hobbies"
-                        value="sports"
-                        className="form-check-input"
-                        checked={hobbies.includes("sports")}
-                        onChange={() => handleCheckboxChange("sports")}
-                      ></input>
-                      <label className="check-label">Sports</label>
-                      <input
-                        type="checkbox"
-                        name="hobbies"
-                        value="music"
-                        className="form-check-input"
-                        checked={hobbies.includes("music")}
-                        onChange={() => handleCheckboxChange("music")}
-                      ></input>
-                      <label className="check-label">Music</label>
-                      <input
-                        type="checkbox"
-                        name="hobbies"
-                        value="reading"
-                        className="form-check-input"
-                        checked={hobbies.includes("reading")}
-                        onChange={() => handleCheckboxChange("reading")}
-                      ></input>
-                      <label className="check-label">Reading</label>
-                      <input
-                        type="checkbox"
-                        name="hobbies"
-                        value="dancing"
-                        className="form-check-input"
-                        checked={hobbies.includes("dancing")}
-                        onChange={() => handleCheckboxChange("dancing")}
-                      ></input>
-                      <label className="check-label">Dancing</label>
-                      <input
-                        type="checkbox"
-                        name="hobbies"
-                        value="travel"
-                        className="form-check-input"
-                        checked={hobbies.includes("travel")}
-                        onChange={() => handleCheckboxChange("travel")}
-                      ></input>
-                      <label className="check-label">Travel</label>
-                    </div>
-                  </div> */}
+                  
                 </div>
               </div>
               <div className="card-footer">
                 <button type="submit" className="btn btn-primary">
                   Sign Up
                 </button>
-                {/* <Link to="/" className="btn btn-danger ml-3">Login</Link> */}
+                <Link to="/" className="btn btn-danger ml-3">Go To Login</Link>
               </div>
             </div>
           </form>

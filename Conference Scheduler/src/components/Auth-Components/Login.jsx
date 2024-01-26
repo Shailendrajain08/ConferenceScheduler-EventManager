@@ -1,18 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 // import SignUp from "./SignUp";
-import {Link } from "react-router-dom";
+import {Link, useNavigate } from "react-router-dom";
 
 function Login() {
-  const [userId, setUserId] = useState("");
+  const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
+  useEffect(() => {
+    sessionStorage.clear()
+}, [])
 
+  const usenavigate = useNavigate()
 
   const handleLogin = (e) => {
     e.preventDefault();
     if (validate()) {
-      fetch("http://localhost:3000/user/" + userId)
+      fetch("http://localhost:3000/user/" + id)
         .then((res) => {
           return res.json();
         })
@@ -21,8 +25,9 @@ function Login() {
             toast.error("Please Enter valid username");
           } else {
             if (resp.password === password) {
+              usenavigate("/events")
               toast.success("Success");
-              sessionStorage.setItem("username", userId);
+              sessionStorage.setItem("username", id);
               sessionStorage.setItem("userrole", resp.role)
             } else {
               toast.error("Please Enter valid credentials");
@@ -38,7 +43,7 @@ function Login() {
 
   const validate = () => {
     let result = true;
-    if (userId === "" || userId === null) {
+    if (id === "" || id === null) {
       result = false;
       toast.warning("Please Enter Username");
     }
@@ -70,8 +75,8 @@ function Login() {
                   <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input
-                      value={userId}
-                      onChange={(e) => setUserId(e.target.value)}
+                      value={id}
+                      onChange={(e) => setId(e.target.value)}
                       type="text"
                       className="form-control"
                       id="username"

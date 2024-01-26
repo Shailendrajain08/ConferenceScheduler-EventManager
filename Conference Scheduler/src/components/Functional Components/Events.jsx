@@ -1,22 +1,37 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 function Events() {
   const [allEvent, setAllEvent] = useState([]);
 
+  const usenavigate = useNavigate()
+
   useEffect(() => {
+    let id = sessionStorage.getItem('username');
+    if(id === '' || id === null){
+        usenavigate('/');
+    }else{
     fetch("http://localhost:3000/events")
       .then((res) => {
         return res.json();
       })
       .then((resp) => {
         setAllEvent(resp);
-        console.log(resp, ">>>>>>>")
         return resp;
       })
       .catch((err) => {
         console.log(`Something Went Wrong`, `${err.message}`);
       });
+    }
   }, []);
+
+  const handleCart = () => {
+  return(
+    <div>
+      <h1>this is me!!!!!</h1>
+    </div>
+  )
+};
 
   return (
     <div>
@@ -29,61 +44,105 @@ function Events() {
           </div>
         </div>
       </div>
+      
       {allEvent.map((dataObj) => {
-        console.log("Hello", dataObj);
-        <div className="offset-lg-1 col-lg-10 my-1">
-          <div className="container">
-            <div className="card ">
-              <div className="card-header bs-success-bg-subtle">
-                <h1><b>Name of the Event: {dataObj.eventName}</b></h1>
-              </div>
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-lg-6">
-                    <p><b>Organizer: {dataObj.eventOrganizer} </b></p>
+        {console.log(dataObj);}
+        return (
+          <>
+            <div className="offset-lg-1 col-lg-10 my-1" >
+              
+              <div className="container">
+                <div className="card ">
+                  <div className="card-header bs-success-bg-subtle">
+                    <h3>
+                      <b>Name of the Event: </b>
+                      {dataObj.eventName}
+                    </h3>
                   </div>
-                  <div className="col-lg-6">
-                    <p><b>Event Type: {dataObj.eventType}</b></p>
-                  </div>
-                  <div className="col-lg-6">
-                    <p><b>Event Speaker Details: {dataObj.eventSpeakerDetails}</b></p>
-                  </div>
-                  <div className="col-lg-6">
-                    <p><b>Event Location & Address: {dataObj.eventLocationAddress} </b></p>
-                  </div>
-                  <div className="col-lg-6">
-                    <p><b>Event Date: {dataObj.eventDate} </b></p>
-                  </div>
-                  <div className="col-lg-6">
-                    <p><b>Event Time: {dataObj.eventTime}</b></p>
-                  </div>
-                  <div className="col-lg-6">
-                    <p><b>Event Details: {dataObj.eventDescription}</b></p>
-                  </div>
-                  <div className="col-lg-6">
-                    <p><b>Organizer Details: {dataObj.eventOrganizerDetails}</b></p>
-                  </div>
-                  <div className="card-footer ">
-                  <div className="row">
-                    <div className="col-lg-6">
-                    <div className="col-lg-3">
-                    <p><b>Total Seats: {dataObj.eventNumSeat}</b></p>
-                    </div>
-                    <div className="col-lg-3">
-                    <p><b>Remaining Seats: {dataObj.eventNumSeat-dataObj.bookedSeat} </b></p>
-                    </div>
-                    </div>
-                    <div className="col-lg-6">
-                      <button className="btn btn-primary col-lg-6"> Buy</button>
-                    </div>
+                  <div className="card-body">
+                    <div className="row">
+                      <div className="col-lg-6">
+                        <p>
+                          <b>Organizer: </b>
+                          {dataObj.eventOrganizer}
+                        </p>
+                      </div>
+                      <div className="col-lg-6">
+                        <p>
+                          <b>Event Type: </b>
+                          {dataObj.eventType}
+                        </p>
+                      </div>
+                      <div className="col-lg-6">
+                        <p>
+                          <b>Event Speaker Details: </b>
+                          {dataObj.eventSpeakerDetails}
+                        </p>
+                      </div>
+                      <div className="col-lg-6">
+                        <p>
+                          <b>Event Location & Address: </b>
+                          {dataObj.eventLocationAddress}
+                        </p>
+                      </div>
+                      <div className="col-lg-6">
+                        <p>
+                          <b>Event Date: </b>
+                          {dataObj.eventDate}
+                        </p>
+                      </div>
+                      <div className="col-lg-6">
+                        <p>
+                          <b>Event Time: </b>
+                          {dataObj.eventTime}
+                        </p>
+                      </div>
+                      <div className="col-lg-6">
+                        <p>
+                          <b>Event Details: </b>
+                          {dataObj.eventDescription}
+                        </p>
+                      </div>
+                      <div className="col-lg-6">
+                        <p>
+                          <b>Organizer Details: </b>
+                          {dataObj.eventOrganizerDetails}
+                        </p>
+                      </div>
+                      <div className="card-footer ">
+                        <div className="row">
+                          <div className="col-lg-6">
+                            <div className="row">
+                              <div className="col-lg-3">
+                                <p>
+                                  <b>Total Seats: </b>
+                                  {dataObj.eventNumSeat}
+                                </p>
+                              </div>
+                              <div className="col-lg-3">
+                                <p>
+                                  <b>Seats Left: </b>
+                                  {dataObj.eventNumSeat - dataObj.bookedSeat}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <button className="btn btn-primary col-lg-6" onClick={handleCart}>
+                            
+                              Buy
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>;
-       })}
+          </>
+        );
+      })}
     </div>
   );
 }

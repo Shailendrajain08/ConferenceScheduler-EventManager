@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
@@ -17,8 +17,29 @@ function CreateEvent() {
   const [bookedSeat, setBookedSeat] = useState(0);
   const [buyerList, setBuyerList] = useState([]);
 
+  const [eventOrganizerId, setEventOrganizerId] = useState("");
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    let id = sessionStorage.getItem('username');
+    if(id === '' || id === null){
+      navigate('/');
+    }
+
+    fetch("http://localhost:3000/user/" + id)
+        .then((res) => {
+          return res.json();
+        }).then((resp) => {
+          setEventOrganizerId(resp.id)
+          return resp;
+
+        })
+        .catch((err) => {
+          console.log(`Something Went Wrong`, `${err.message}`);
+        });
+  }, [])
+
 
   const handleSubmitEvent = (e) => {
     navigate("/events")
@@ -38,7 +59,8 @@ function CreateEvent() {
       eventOrganizerDetails,
       eventDescription,
       bookedSeat,
-      buyerList
+      buyerList,
+      eventOrganizerId
     };
 
     if (isValidate()) {
@@ -50,7 +72,6 @@ function CreateEvent() {
           })
             .then((res) => {
               toast.success("New Event Created", res.message);
-              // navigate('/login')
             })
             .catch((err) => {
               toast.error(`Something Went Wrong`, `${err.message}`);

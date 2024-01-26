@@ -10,6 +10,8 @@ import SignUp from './components/Auth-Components/SignUp';
 import Layout from './components/Layout';
 import Events from './components/Functional Components/Events';
 import CreateEvent from './components/Functional Components/CreateEvent'
+import YourEvent from './components/Functional Components/YourEvent'
+import Cart from './components/Functional Components/Cart'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -21,6 +23,9 @@ const router = createBrowserRouter(
       <Route path="/events" element={<Events/>}></Route>
       <Route path="/signup" element={<SignUp/>}></Route>
       <Route path="/createEvent" element={<CreateEvent/>}></Route>
+      <Route path="/yourEvent" element={<YourEvent/>}></Route>
+      <Route path="/cart" element={<Cart/>}></Route>
+
     </Route>
 )
 )

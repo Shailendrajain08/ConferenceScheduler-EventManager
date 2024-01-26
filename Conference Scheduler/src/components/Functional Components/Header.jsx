@@ -1,4 +1,24 @@
+import { useEffect } from 'react'
+import { Link, useNavigate } from "react-router-dom";
+
 function Header() {
+  const usenavigate = useNavigate()
+ 
+
+  useEffect(() => {
+    let id = sessionStorage.getItem('username');
+    if(id === '' || id === null){
+        usenavigate('/');
+    }
+    
+}, [])
+
+
+const handleLogOut = () => {
+  sessionStorage.clear()
+  usenavigate('/');
+}
+
   return (
     <>
       <nav className="navbar bg-body-tertiary card">
@@ -14,9 +34,12 @@ function Header() {
           </a>
           
           <div className="navbar-nav flex-row" >
-          <a className="nav-link active mr-8" aria-current="page" href="events">Events</a>
-          <a className="nav-link active mr-8" aria-current="page" href="createEvent">Create Event</a>
-          <a className="nav-link active mr-8" aria-current="page" href="/">Log Out</a>
+          
+          <Link className="nav-link active mr-8" aria-current="page" to="events">Events</Link>
+          <Link className="nav-link active mr-8" aria-current="page" to="yourEvent">Your Event</Link>
+          <Link className="nav-link active mr-8" aria-current="page" to="createEvent">Create Event</Link>
+          <Link className="nav-link active mr-8" aria-current="page" onClick={handleLogOut}>Log Out</Link>
+          
           </div>
           </div>
       </nav>
